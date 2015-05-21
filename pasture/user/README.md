@@ -13,13 +13,11 @@ Have a look at the 'templates' folder and follow the structural and naming logic
 
 ###Basic usage examples:
 
-1. 
 ```javascript
 talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);
 ```
 Immediately responds to sheepdog 'makefudge' telling it to execute the function - mix('batch',sugar);
 
-2.
 ```javascript
 talk().emit('sheep.makefudge.oven','set','temperature',145,true);
 talk().emit('sheep.makefudge.refine','do','process',[raw_ingredients],true);
@@ -54,17 +52,12 @@ The universals can call globals from their own context, but you can only call un
 
 ###Methods for shepherds:
 
-`talk(socket).reply(<instruction>);`		
-- reply to a single sheepdog
-`talk(socket).broadcast(<instruction>);` 	
-- communicate with all sheepdogs except the originator
-`talk().emit(<instruction>);` 			
-- communicate with all sheepdogs
-`talk(socket).process();`			
-- process a chained queue of instructions
+- reply to a single sheepdog `talk(socket).reply(<instruction>);`		
+- communicate with all sheepdogs except the originator `talk(socket).broadcast(<instruction>);` 	
+- communicate with all sheepdogs `talk().emit(<instruction>);` 			
+- process a chained queue of instructions `talk(socket).process();`			
+- ping all sheep dogs, display the message in browser consoles and log response to server console `ping('message');`				
 
-`ping('message');`				
-- ping all sheepdogs, display the message in browser consoles and log response to server console
 
 
 ###Methods for sheepdogs and sheep:
