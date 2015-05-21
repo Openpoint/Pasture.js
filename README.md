@@ -7,9 +7,12 @@ It is a modular JS framework built on top of Node.js and Socket.io. These establ
 
 ##Terminology:
 
-Shepherd	- Your node server
-Sheepdog	- Any client browser that is connected to your website
-Sheep		- Any web worker that is created in a Sheepdog
+Shepherd	
+:Your node server
+Sheepdog	
+:Any client browser that is connected to your website
+Sheep		
+:Any web worker that is created in a Sheepdog
 
 Each module you create represents a server side (shepherd) and client side(sheepdog + sheep) logic.
 Shepherds are responsible for packaging tasks and instructing the sheepdogs to execute them.
@@ -39,11 +42,9 @@ tea.served=function(guest){
 		talk().process();	
 	}
 }
-
 ~~~~
 Sheepdogs run in js browser Window and are in the form of:
  	
-
 ~~~~
 var module_name='tea';
 var guest={satisfied:false,name:socket.id};
@@ -67,13 +68,10 @@ tea.isready=function(cuppa){
 tea.promotion=function(message){
 	$('#promo').html(message);
 }
- 	
-
 ~~~~
 
 Sheep run in Web Workers and are in the form of:
  	
-
 ~~~~
 var sheep_name='kettle';
 function  maketea(){
@@ -84,19 +82,18 @@ kettle.boil=function(liquid){
 	cuppa.magic= maketea(); 
 	talk.back('sheepdog.tea','do','isready',[cuppa]);
 }
- 	
 ~~~~
 
 ##Quick Start:
 
 Pasture is developed on Ubuntu 14.04, and should be compatible with any Unix type system.
 
-###Prerequisites:
+####Prerequisites:
 Install Node.js, Node Package Manager (NPM) and optionally MongoDB. Ensure that these are in your PATH.
 Download and copy Pasture into your project root and do <your_project>$ npm install
 Adjust  <your_project>/settings.js to suite your environment
 
-###Starting Pasture:
+####Starting Pasture:
 
 At the command prompt, do <your_project>$ node ./pasture.js
 Cntr_C will gracefully shut it down.
@@ -104,7 +101,7 @@ Cntr_C will gracefully shut it down.
 In any HTML5 browser, go to the URL and port you specified in settings.js - eg http://<your_domain>:8080
 If you have node running on port 80, no need to specify the port in the browser. 
 
-###Creating Pasture modules:
+####Creating Pasture modules:
 
 Everyting you need to create Pasture modules are in <your_container>/pasture/user. The 'readme' there contains detailed usage instructions. There is also a 'template' module folder which contains, as you would expect, templates.
 To create your own single page application, just modify <your_project>/index.html and <your_project>/settings.js accordingly. Add custom page css and js in <your_project>/public/<css or js> and link in (top of) the head of index.html. 
