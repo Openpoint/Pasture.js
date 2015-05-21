@@ -1,4 +1,5 @@
-**Pasture provides a common language bridge between a node.js server, browser windows and browser web workers.** 
+##Pasture provides a common language bridge between a node.js server, browser windows and browser web workers.
+
 There are two points of 'asynchronisity' in the network communication:
 
 1. between node.js (shepherd) and the browser window (sheepdog)
@@ -12,9 +13,9 @@ Have a look at the 'templates' folder and follow the structural and naming logic
 
 ###Basic usage examples:
 
-1. `talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);`
+1. 
+`talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);`
 Immediately responds to sheepdog 'makefudge' telling it to execute the function - mix('batch',sugar);
-___________________________________________________________________________________________________________________________________________________
 
 2.
 ```javascript
@@ -46,20 +47,17 @@ or
 The universals can call globals from their own context, but you can only call universals from any context.
 
 
-___________________________________________________________________________________________________________________________________________________
+###Methods for shepherds:
 
-Methods for shepherds:
+`talk(socket).reply(<instruction>);`		- reply to a single sheepdog
+`talk(socket).broadcast(<instruction>);` 	- communicate with all sheepdogs except the originator
+`talk().emit(<instruction>);` 			- communicate with all sheepdogs
+`talk(socket).process();`			- process a chained queue of instructions
 
-talk(socket).reply(<instruction>) 			- reply to a single sheepdog
-talk(socket).broadcast(<instruction>) 		- communicate with all sheepdogs except the originator
-talk().emit(<instruction>) 					- communicate with all sheepdogs
-talk(socket).process();						- process a chained queue of instructions
+`ping('message');`				- ping all sheepdogs, display the message in browser consoles and log response to server console
 
-ping('message')								- ping all sheepdogs, display the message in browser consoles and log response to server console
 
-___________________________________________________________________________________________________________________________________________________
-
-Methods for sheepdogs and sheep:
+###Methods for sheepdogs and sheep:
 
 talk().back(<instruction>) 					- communicate with any shepherd, sheepdog or sheep
 talk.write('key',value);					- write to browser local storage (browser storage is normally limited to 5Mb)
