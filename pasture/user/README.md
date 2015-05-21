@@ -14,7 +14,9 @@ Have a look at the 'templates' folder and follow the structural and naming logic
 ###Basic usage examples:
 
 1. 
-`talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);`
+```javascript
+talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);
+```
 Immediately responds to sheepdog 'makefudge' telling it to execute the function - mix('batch',sugar);
 
 2.
@@ -36,12 +38,15 @@ For a module called 'makefudge' with 2 sheep called 'oven' and 'refine' as follo
 **In shepherd and sheepdog:**
 
 `makefudge.waitforingredients=function(){};`
+
 `makefudge.somevalue=100;`
 
 **In sheep:**
 
 `oven.temperature=143;`
+
 or
+
 `refine.process=function(){};`
   
 The universals can call globals from their own context, but you can only call universals from any context.
@@ -49,45 +54,53 @@ The universals can call globals from their own context, but you can only call un
 
 ###Methods for shepherds:
 
-`talk(socket).reply(<instruction>);`		- reply to a single sheepdog
-`talk(socket).broadcast(<instruction>);` 	- communicate with all sheepdogs except the originator
-`talk().emit(<instruction>);` 			- communicate with all sheepdogs
-`talk(socket).process();`			- process a chained queue of instructions
+`talk(socket).reply(<instruction>);`		
+- reply to a single sheepdog
+`talk(socket).broadcast(<instruction>);` 	
+- communicate with all sheepdogs except the originator
+`talk().emit(<instruction>);` 			
+- communicate with all sheepdogs
+`talk(socket).process();`			
+- process a chained queue of instructions
 
-`ping('message');`				- ping all sheepdogs, display the message in browser consoles and log response to server console
+`ping('message');`				
+- ping all sheepdogs, display the message in browser consoles and log response to server console
 
 
 ###Methods for sheepdogs and sheep:
 
-talk().back(<instruction>) 					- communicate with any shepherd, sheepdog or sheep
-talk.write('key',value);					- write to browser local storage (browser storage is normally limited to 5Mb)
-talk.read('key','module_name.sheep_name')	
-.then(function(data){});					- read from browser local storage asynchronously
-
+`talk().back(**<instruction>**);` 					
+- communicate with any shepherd, sheepdog or sheep
+`talk.write('key',value);`					
+- write to browser local storage (browser storage is normally limited to 5Mb)
+`talk.read('key','module_name.sheep_name').then(function(data){});`					
+- read from browser local storage asynchronously
+- 
+```javascript
 talk().back('sheepdog','do','kill_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','reset_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
+```
 
 terminates, resets or spawns sheep respectively.
 
-___________________________________________________________________________________________________________________________________________________
+**<instruction>** takes the form of: <'destination','action','target',<parameters>,chain>
 
-<instruction> takes the form of:
-<'destination','action','target',<parameters>,chain>
-___________________________________________________________________________________________________________________________________________________
+**Destinations:** <**'destination'**,'action','target',<parameters>,chain>
 
-Destinations: <'destination','action','target',<parameters>,chain>
+`'sheepdog'`									
+- communicate with sheepdog root (only access built in methods)
+`'sheepdog.module_name'`						
+- communicate with sheepdog for specific module context
+`'sheep.module_name.sheep_name'`				
+- communicate with specific sheep
 
-'sheepdog'									- communicate with sheepdog root (only access built in methods)
-'sheepdog.module_name'						- communicate with sheepdog for specific module context
-'sheep.module_name.sheep_name'				- communicate with specific sheep
-___________________________________________________________________________________________________________________________________________________
+**Actions:** <'destination',**'action'**,'target',<parameters>,chain>
 
-Actions: <'destination','action','target',<parameters>,chain>
-
-'do'										-execute a function
-'set'										-set a value
-___________________________________________________________________________________________________________________________________________________
+`'do'`										
+-execute a function
+`'set'`										
+-set a value
 
 Target: <'destination','action','target',<parameters>,chain>
 
