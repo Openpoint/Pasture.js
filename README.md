@@ -7,11 +7,11 @@ It is a modular JS framework built on top of Node.js and Socket.io. These establ
 
 ##Terminology:
 
-*Shepherd*	-Your node server
+**Shepherd**    -Your node server
 
-*Sheepdog*	-Any client browser that is connected to your website
+**Sheepdog**    -Any client browser that is connected to your website
 
-*Sheep*		-Any web worker that is created in a Sheepdog
+**Sheep**       -Any web worker that is created in a Sheepdog
 
 Each module you create represents a server side (shepherd) and client side(sheepdog + sheep) logic.
 Shepherds are responsible for packaging tasks and instructing the sheepdogs to execute them.
@@ -89,12 +89,14 @@ Pasture is developed on Ubuntu 14.04, and should be compatible with any Unix typ
 
 ####Prerequisites:
 Install Node.js, Node Package Manager (NPM) and optionally MongoDB. Ensure that these are in your PATH.
-Download and copy Pasture into your project root and do <your_project>$ npm install
+Download and copy Pasture into your project root and do `<your_project>$ npm install`
+
 Adjust  <your_project>/settings.js to suite your environment
 
 ####Starting Pasture:
 
 At the command prompt, do `<your_project>$ node ./pasture.js`
+
 Cntr_C will gracefully shut it down.
 
 In any HTML5 browser, go to the URL and port you specified in settings.js - eg `http://<your_domain>:8080`
