@@ -1,7 +1,6 @@
+![pasture_master](https://cloud.githubusercontent.com/assets/998947/7757711/528b78c6-fffc-11e4-868a-4bab7857b964.png)
 # Pasture.js
 Pasture is a framework for distributed, browser based computing systems.
-
-![pasture_master](https://cloud.githubusercontent.com/assets/998947/7757711/528b78c6-fffc-11e4-868a-4bab7857b964.png)
 
 It is a modular JS framework built on top of Node.js and Socket.io. These establish web sockets between HTML5 browser clients and your node server. Pasture provides a common language to pass instructions bi-directionaly between your server, the browser JS Window and browser Web Workers. 
 
