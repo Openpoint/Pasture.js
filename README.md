@@ -78,7 +78,7 @@ function  maketea(){
 kettle.boil=function(liquid){
 	var cuppa={type:liquid,problem:false,madeby:socket.id,magic:null};
 	cuppa.magic= maketea(); 
-	talk.back('sheepdog.tea','do','isready',[cuppa]);
+	talk().back('sheepdog.tea','do','isready',[cuppa]);
 }
 ```
 
