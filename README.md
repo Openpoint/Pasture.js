@@ -104,4 +104,5 @@ If you have node running on port 80, no need to specify the port in the browser.
 ####Creating Pasture modules:
 
 Everyting you need to create Pasture modules are in `<your_container>/pasture/user`. The 'readme' there contains detailed usage instructions. There is also a 'template' module folder which contains, as you would expect, templates.
+
 To create your own single page application, just modify `<your_project>/index.html` and `<your_project>/settings.js` accordingly. Add custom page css and js in `<your_project>/public/<css or js>` and link in (top of) the head of index.html. 
