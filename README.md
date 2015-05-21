@@ -7,11 +7,11 @@ It is a modular JS framework built on top of Node.js and Socket.io. These establ
 
 ##Terminology:
 
-Shepherd	:Your node server
+*Shepherd*	-Your node server
 
-Sheepdog	:Any client browser that is connected to your website
+*Sheepdog*	-Any client browser that is connected to your website
 
-Sheep	:Any web worker that is created in a Sheepdog
+*Sheep*		-Any web worker that is created in a Sheepdog
 
 Each module you create represents a server side (shepherd) and client side(sheepdog + sheep) logic.
 Shepherds are responsible for packaging tasks and instructing the sheepdogs to execute them.
@@ -19,7 +19,7 @@ Sheepdogs are responsible for further dissemination of tasks to sheep, listening
 
 Shepherds run on the node.js server and are in the form of:
 
-~~~~
+```javascript
 var module_name='tea';
 var ontheside=['milk','cookies','sugar'];
 talk().emit('sheepdog.tea','set','ontable',ontheside,true);
@@ -41,10 +41,10 @@ tea.served=function(guest){
 		talk().process();	
 	}
 }
-~~~~
+```
 Sheepdogs run in js browser Window and are in the form of:
  	
-~~~~
+```javascript
 var module_name='tea';
 var guest={satisfied:false,name:socket.id};
 var sides=0;
@@ -67,11 +67,11 @@ tea.isready=function(cuppa){
 tea.promotion=function(message){
 	$('#promo').html(message);
 }
-~~~~
+```
 
 Sheep run in Web Workers and are in the form of:
  	
-~~~~
+```javascript
 var sheep_name='kettle';
 function  maketea(){
 	return <some CPU or network heavy work for making a cup of tea>
@@ -81,7 +81,7 @@ kettle.boil=function(liquid){
 	cuppa.magic= maketea(); 
 	talk.back('sheepdog.tea','do','isready',[cuppa]);
 }
-~~~~
+```
 
 ##Quick Start:
 
