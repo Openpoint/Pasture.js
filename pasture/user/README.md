@@ -64,14 +64,14 @@ The universals can call globals from their own context, but you can only call un
 
 - communicate with any shepherd, sheepdog or sheep `talk().back(<instruction>);` 		
 - write to browser local storage (browser storage is normally limited to 5Mb) `talk.write('key',value);`		- read from browser local storage asynchronously `talk.read('key','module_name.sheep_name').then(function(data){});`
-- terminate, reset or spawn sheep respectively:				
+- terminate, reset or spawn sheep respectively				
 ```javascript
 talk().back('sheepdog','do','kill_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','reset_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 ```
 
-###<instruction> takes the form of: <'destination','action','target',<parameters>,chain>
+<instruction> takes the form of <'destination','action','target',<parameters>,chain>
 
 **Destinations:** <**'destination'**,'action','target',<parameters>,chain>
 
