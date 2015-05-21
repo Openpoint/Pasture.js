@@ -1,7 +1,7 @@
-Pasture provides a common language bridge between a node.js server, browser windows and browser web workers. There are two points of 'asynchronisity' in the network communication:
+**Pasture provides a common language bridge between a node.js server, browser windows and browser web workers. There are two points of 'asynchronisity' in the network communication:**
 
-1 - between node.js (shepherd) and the browser window (sheepdog)
-2 - between the  browser window (sheepdog) and the web workers (sheep)
+1. between node.js (shepherd) and the browser window (sheepdog)
+2. between the  browser window (sheepdog) and the web workers (sheep)
 
 Any system design should be aware of this at the start.
 
@@ -9,22 +9,16 @@ Pasture is a modular framework and all modules with associated files should be p
 Have a look at the 'templates' folder and follow the structural and naming logic for your own modules.
 
 
-Basic usage examples:
-___________________________________________________________________________________________________________________________________________________
+~~Basic usage examples:
 
-1)
-
-talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);
-
+1. `talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);`
 Immediately responds to sheepdog 'makefudge' telling it to execute the function - mix('batch',sugar);
 ___________________________________________________________________________________________________________________________________________________
 
-2)
-
-talk().emit('sheep.makefudge.oven','set','temperature',145,true);
+2. ```talk().emit('sheep.makefudge.oven','set','temperature',145,true);
 talk().emit('sheep.makefudge.refine','do','process',[raw_ingredients],true);
 talk().emit('sheepdog.makefudge','do','waitforingredients',[raw_ingredients],true);
-talk().process();
+talk().process();```
 
 will deliver a batch of synchronous commands to all sheepdogs for further execution and instructing the sheep
 
