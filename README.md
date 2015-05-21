@@ -7,12 +7,11 @@ It is a modular JS framework built on top of Node.js and Socket.io. These establ
 
 ##Terminology:
 
-Shepherd	
-:Your node server
-Sheepdog	
-:Any client browser that is connected to your website
-Sheep		
-:Any web worker that is created in a Sheepdog
+Shepherd	:Your node server
+
+Sheepdog	:Any client browser that is connected to your website
+
+Sheep	:Any web worker that is created in a Sheepdog
 
 Each module you create represents a server side (shepherd) and client side(sheepdog + sheep) logic.
 Shepherds are responsible for packaging tasks and instructing the sheepdogs to execute them.
