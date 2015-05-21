@@ -1,4 +1,4 @@
-**Pasture provides a common language bridge between a node.js server, browser windows and browser web workers. There are two points of 'asynchronisity' in the network communication:**
+Pasture provides a common language bridge between a node.js server, browser windows and browser web workers. There are two points of 'asynchronisity' in the network communication:
 
 1. between node.js (shepherd) and the browser window (sheepdog)
 2. between the  browser window (sheepdog) and the web workers (sheep)
@@ -9,9 +9,9 @@ Pasture is a modular framework and all modules with associated files should be p
 Have a look at the 'templates' folder and follow the structural and naming logic for your own modules.
 
 
-~~Basic usage examples:
+Basic usage examples:
 
-1. `talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);`
+1. talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);
 Immediately responds to sheepdog 'makefudge' telling it to execute the function - mix('batch',sugar);
 ___________________________________________________________________________________________________________________________________________________
 
