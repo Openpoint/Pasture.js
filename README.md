@@ -73,7 +73,7 @@ Sheep run in Web Workers and are in the form of:
 ```javascript
 var sheep_name='kettle';
 function  maketea(){
-	return //some CPU or network heavy work for making a cup of tea
+	return //result of some CPU or network heavy work for making a cup of tea
 }
 kettle.boil=function(liquid){
 	var cuppa={type:liquid,problem:false,madeby:socket.id,magic:null};
@@ -96,7 +96,7 @@ Adjust  <your_project>/settings.js to suite your environment
 
 At the command prompt, do `<your_project>$ node ./pasture.js`
 
-Cntr_C will gracefully shut it down.
+Ctrl_C will gracefully shut it down.
 
 In any HTML5 browser, go to the URL and port you specified in settings.js - eg `http://<your_domain>:8080`
 If you have node running on port 80, no need to specify the port in the browser. 
