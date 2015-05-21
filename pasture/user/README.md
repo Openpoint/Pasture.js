@@ -71,7 +71,7 @@ talk().back('sheepdog','do','reset_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 ```
 
-instruction takes the form of ('destination','action','target',<parameters>,chain)
+##`<instruction>` takes the form of `('destination','action','target',<parameters>,chain)`
 
 **Destinations:** <**'destination'**,'action','target',<parameters>,chain>
 
