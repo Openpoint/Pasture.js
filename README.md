@@ -73,7 +73,7 @@ Sheep run in Web Workers and are in the form of:
 ```javascript
 var sheep_name='kettle';
 function  maketea(){
-	return <some CPU or network heavy work for making a cup of tea>
+	return //some CPU or network heavy work for making a cup of tea
 }
 kettle.boil=function(liquid){
 	var cuppa={type:liquid,problem:false,madeby:socket.id,magic:null};
