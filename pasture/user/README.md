@@ -1,4 +1,5 @@
-Pasture provides a common language bridge between a node.js server, browser windows and browser web workers. There are two points of 'asynchronisity' in the network communication:
+**Pasture provides a common language bridge between a node.js server, browser windows and browser web workers.** 
+There are two points of 'asynchronisity' in the network communication:
 
 1. between node.js (shepherd) and the browser window (sheepdog)
 2. between the  browser window (sheepdog) and the web workers (sheep)
@@ -9,36 +10,38 @@ Pasture is a modular framework and all modules with associated files should be p
 Have a look at the 'templates' folder and follow the structural and naming logic for your own modules.
 
 
-Basic usage examples:
+###Basic usage examples:
 
-1. talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);
+1. `talk().reply('sheepdog.makefudge','do','mix',['batch',sugar]);`
 Immediately responds to sheepdog 'makefudge' telling it to execute the function - mix('batch',sugar);
 ___________________________________________________________________________________________________________________________________________________
 
-2. ```talk().emit('sheep.makefudge.oven','set','temperature',145,true);
+2.
+```javascript
+talk().emit('sheep.makefudge.oven','set','temperature',145,true);
 talk().emit('sheep.makefudge.refine','do','process',[raw_ingredients],true);
 talk().emit('sheepdog.makefudge','do','waitforingredients',[raw_ingredients],true);
-talk().process();```
+talk().process();
+```
 
 will deliver a batch of synchronous commands to all sheepdogs for further execution and instructing the sheep
 
-___________________________________________________________________________________________________________________________________________________
 
-Universal namespacing:
+###Universal namespacing:
 
 All universally accessible functions and variables are namespaced by the module or sheep name, ie.
 For a module called 'makefudge' with 2 sheep called 'oven' and 'refine' as follows;
 
-In shepherd and sheepdog:
+**In shepherd and sheepdog:**
 
-makefudge.waitforingredients=function(){};
-makefudge.somevalue=100;
+`makefudge.waitforingredients=function(){};`
+`makefudge.somevalue=100;`
 
-In sheep:
+**In sheep:**
 
-oven.temperature=143;
+`oven.temperature=143;`
 or
-refine.process=function(){};
+`refine.process=function(){};`
   
 The universals can call globals from their own context, but you can only call universals from any context.
 
