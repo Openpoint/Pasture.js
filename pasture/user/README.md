@@ -80,8 +80,8 @@ talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 - communicate with specific sheep`'sheep.module_name.sheep_name'`				
 
 **Actions:** `('destination','action','target',<parameters>,chain)`
--execute a function `'do'`										
--set a value `'set'`										
+- execute a function `'do'`										
+- set a value `'set'`										
 
 
 **Target:** `('destination','action','target',<parameters>,chain)`
