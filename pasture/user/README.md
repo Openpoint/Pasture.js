@@ -75,36 +75,30 @@ talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 `<instruction>` takes the form of `('destination','action','target',<parameters>,chain)`
 
 **Destinations:** `('destination','action','target',<parameters>,chain)`
-
 - communicate with sheepdog root (only access built in methods) `'sheepdog'`
 - communicate with sheepdog for specific module context `'sheepdog.module_name'`				
 - communicate with specific sheep`'sheep.module_name.sheep_name'`				
 
 **Actions:** `('destination','action','target',<parameters>,chain)`
-
 -execute a function `'do'`										
 -set a value `'set'`										
 
 
 **Target:** `('destination','action','target',<parameters>,chain)`
-
 The name of the object in the destination, it can either be a variable or a function. eg:
 To set the value of `oven.temperature` in the makefudge module, sheep named 'oven', the syntax will be: `'sheep.makefudge.oven','set','temperature',<value>`
 
 
 **Parameters:** `('destination','action','target',<parameters>,chain)`
-
 For functions, use an array of parameters to pass: `['param1',some_var,'param3']` or empty `[]`
 For variables, just pass the value to set. This can be any valid type - string, variable, array, object, etc
 
 **Chain:** `('destination','action','target',<parameters>,chain)`
-
 A boolean value
 If false or not specified, the instruction gets processed immediately. 
 If true, the intruction gets queued and sent out in a single batch when `talk().process()` is called.
 
 **Socket:** `talk(socket).reply(<instruction>)` 
-
 The global variable `socket` identifies the active connection in synchronous excecution on the shepherd. It is important for 'reply' and 'broadcast' communication. 
 `talk()` Will automatically apply the correct socket, until it is moved into an asynchronous context, such as `setTimeout`
 
