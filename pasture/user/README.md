@@ -62,72 +62,61 @@ The universals can call globals from their own context, but you can only call un
 
 ###Methods for sheepdogs and sheep:
 
-`talk().back(**<instruction>**);` 					
-- communicate with any shepherd, sheepdog or sheep
-`talk.write('key',value);`					
-- write to browser local storage (browser storage is normally limited to 5Mb)
-`talk.read('key','module_name.sheep_name').then(function(data){});`					
-- read from browser local storage asynchronously
-- 
+- communicate with any shepherd, sheepdog or sheep `talk().back(<instruction>);` 		
+- write to browser local storage (browser storage is normally limited to 5Mb) `talk.write('key',value);`		- read from browser local storage asynchronously `talk.read('key','module_name.sheep_name').then(function(data){});`	- terminate, resets or spawns sheep respectively:				
 ```javascript
 talk().back('sheepdog','do','kill_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','reset_sheep',['module_name.sheep_name']);
 talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 ```
 
-terminates, resets or spawns sheep respectively.
+
 
 **<instruction>** takes the form of: <'destination','action','target',<parameters>,chain>
 
 **Destinations:** <**'destination'**,'action','target',<parameters>,chain>
 
-`'sheepdog'`									
-- communicate with sheepdog root (only access built in methods)
-`'sheepdog.module_name'`						
-- communicate with sheepdog for specific module context
-`'sheep.module_name.sheep_name'`				
-- communicate with specific sheep
+- communicate with sheepdog root (only access built in methods) `'sheepdog'`
+- communicate with sheepdog for specific module context `'sheepdog.module_name'`				
+- communicate with specific sheep`'sheep.module_name.sheep_name'`				
 
 **Actions:** <'destination',**'action'**,'target',<parameters>,chain>
 
-`'do'`										
--execute a function
-`'set'`										
--set a value
+-execute a function `'do'`										
+-set a value `'set'`										
 
-Target: <'destination','action','target',<parameters>,chain>
+
+**Target:** <'destination','action',**'target'**,<parameters>,chain>
 
 The name of the object in the destination, it can either be a variable or a function. eg:
-To set the value of <oven.temperature> in the makefudge module, sheep named 'oven', the syntax will be:
-('sheep.makefudge.oven','set','temperature',<value>)
-___________________________________________________________________________________________________________________________________________________
+To set the value of `oven.temperature` in the makefudge module, sheep named 'oven', the syntax will be: `'sheep.makefudge.oven','set','temperature',<value>`
 
-Parameters: <'destination','action','target',<parameters>,chain>
 
-For functions, use an array of parameters to pass: ['param1',some_var,'param3'] or empty []
+**Parameters:** <'destination','action','target',**<parameters>**,chain>
+
+For functions, use an array of parameters to pass: `['param1',some_var,'param3']` or empty `[]`
 For variables, just pass the value to set. This can be any valid type - string, variable, array, object, etc
-___________________________________________________________________________________________________________________________________________________
 
-Chain: <'destination','action','target',<parameters>,chain>
+**Chain:** <'destination','action','target',<parameters>,**chain**>
 
 A boolean value
 If false or not specified, the instruction gets processed immediately. 
-If true, the intruction gets queued and sent out in a single batch when talk().process() is called.
-___________________________________________________________________________________________________________________________________________________
+If true, the intruction gets queued and sent out in a single batch when `talk().process()` is called.
 
-Socket: talk(socket).reply(<instruction>) 
+**Socket:** talk(**socket**).reply(<instruction>) 
 
-The global variable <socket> identifies the active connection in synchronous excecution on the shepherd. It is important for 'reply' and 'broadcast' communication. 
-<talk()> Will automatically apply the correct socket, until it is moved into an asynchronous context, such as <setTimeout>
-In these cases, ensure you copy the active <socket> into the asynchronous scope and then call: 
-talk(async_socket_variable).reply();
+The global variable `socket` identifies the active connection in synchronous excecution on the shepherd. It is important for 'reply' and 'broadcast' communication. 
+`talk()` Will automatically apply the correct socket, until it is moved into an asynchronous context, such as `setTimeout`
+
+In these cases, ensure you copy the active `socket` into the asynchronous scope and then call: 
+`talk(async_socket_variable).reply();`
 or  
-talk(async_socket_variable).broadcast();
+`talk(async_socket_variable).broadcast();`
 or
-talk(async_socket_variable).process();
+`talk(async_socket_variable).process();`
 
 eg.
-
+```javascript
 function dolater(sock){
 	var so=sock;
 	setTimeout(function(){
@@ -135,5 +124,6 @@ function dolater(sock){
 	},5000);
 }
 dolater(socket);
+```
 
 This will reply to the intended sheepdog from the shepherd at a later time
