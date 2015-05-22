@@ -19,10 +19,14 @@
 			<div class='clearfix'></div>
 		</div>
 		<div class='content'>
-			<p>It is a modular JS framework built on top of Node.js and Socket.io. These establish web sockets between HTML5 browser clients and your node server. Pasture provides a common language to pass instructions bi-directionally between your server, the browser JS Window and browser Web Workers.</p>
-			<pre class=console>
+			<p>It is has a modular structure built on top of Node.js and Socket.io. These establish web sockets between HTML5 browser clients and your node server. Pasture provides a common language to pass instructions bi-directionally between your server, the browser JS Window and browser Web Workers.</p>
+			<div class='connected many'>There are <span></span> sheepdogs connected in this pasture</div>
+			<div class='connected single'>You are the only sheepdog in the pasture. Open another browser tab.</div>
+			<pre id='console'>
 Hello there
-			</pre>		
+			</pre>
+			<button onclick='template.bleat()'>Bleat</button>
+			<button onclick='template.bark()'>Bark</button>		
 		</div>
 
 	</body>

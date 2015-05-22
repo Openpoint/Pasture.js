@@ -69,7 +69,7 @@ shepherd.x.boot=function(){
 	//inject all modules code into the 'module' object
 	for(var i=0;i<modules.load_modules.length;++i){
 		var thismod=modules.load_modules[i];
-		module[thismod]=require(user_modules+thismod+'/'+thismod+'.shepherd.js')[thismod](path,fs,talk,mongoose,errorhandler);
+		module[thismod]=require(user_modules+thismod+'/'+thismod+'.shepherd.js')[thismod](path,fs,talk,io,mongoose,errorhandler);
 		
 	}
 	server.listen(Settings.nodeport);

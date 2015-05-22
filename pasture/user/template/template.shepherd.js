@@ -52,6 +52,7 @@ var talk=function(x){ //pulls the talk function into the socket context
 var path;
 var fs;
 var socket;
+var io;
 var dotalk;
 var errorhandler;
 var ping=function(mess){
@@ -62,10 +63,11 @@ var ping=function(mess){
 var schema={}; //set up namespaces for the mongo database using mongoose library. Use these as the database local namespaces throughout for consistency.
 var data={};
 
-exports[module_name] = function(pat,f,tal,mongoose,errhand){
+exports[module_name] = function(pat,f,tal,i,mongoose,errhand){
 	errorhandler=errhand	
 	path=pat;
 	fs=f;
+	io=i;
 	dotalk=tal;	
 	if(mongoose){
 // -------------------------------------------------------------------------------------------------------------end do not change
@@ -100,26 +102,41 @@ exports[module_name] = function(pat,f,tal,mongoose,errhand){
 global[module_name].onConnect=function(){
 
 	//add desired logic to run on new sheepdog connection initialisation here
+	
+	talk().broadcast('sheepdog.template','do','console',[socket+' has connected'],true)
+	talk().emit('sheepdog.template','do','connected',[io.sockets.sockets.length],true)
+	talk().process();
 
 		
 }
 global[module_name].onDisconnect=function(){
 	
 	//add desired logic to run on a sheepdog disconnection here
-	ping(socket+' has disconnected');
+	
+	talk().broadcast('sheepdog.template','do','console',[socket+' has disconnected'],true)
+	talk().emit('sheepdog.template','do','connected',[io.sockets.sockets.length],true)
+	talk().process();
 }
 
 /*-------------------------------------------Add custom logic below here-----------------------------------*/
 
-
 var count=0;
 function samplePinger(){
 	setTimeout(function(){
-		ping('Template says: Welcome to Shepherd!');
-		talk().emit('sheepdog.template','do','console',['The shepherd says '+count])
+		ping('Template pings: '+count);
+		talk().emit('sheepdog.template','do','console',['The shepherd pings '+count])
 		count++;
 		samplePinger();
-	},5000)
+	},15000)
 }
 samplePinger();
 
+template.bleat=function(id){
+	talk().broadcast('sheep.template.sheep1','do','bleat',[id]);
+}
+template.bark=function(id){
+	talk().broadcast('sheepdog.template','do','barkback',[id]);
+}
+template.bleatbark=function(id,mess){
+	talk(id).reply('sheepdog.template','do','console',[mess])
+}

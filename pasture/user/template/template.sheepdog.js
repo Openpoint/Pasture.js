@@ -39,11 +39,32 @@ self[module_name].sheep=[ //define the names of all your sheep under this sheepd
 self[module_name].a.startsheep();
 if(typeof sheepdog.d != 'undefined' && sheepdog.d.d3){ //proceed to boot level3 after all modules are injected
 	sheepdog.d.boot3();
+	
 }
 // end do not change
 
 /*-------------------------------------------Custom module logic goes below here-----------------------------------*/
 
+
 template.console=function(message){
-	$('#console').prepend(message);
+	$('#console').prepend(message+'<br>');
+}
+template.connected=function(count){
+	if(count > 1){
+		$('.connected.single').hide();
+		$('.connected.many').show();
+		$('.connected.many span').html(count);		
+	}else{
+		$('.connected.single').show();
+		$('.connected.many').hide();		
+	}
+}
+template.bleat=function(){
+	talk().back('shepherd.template','do','bleat',[socket.id])
+}
+template.bark=function(){
+	talk().back('shepherd.template','do','bark',[socket.id])	
+}
+template.barkback=function(id){
+	talk().back('shepherd.template','do','bleatbark',[id,socket.id+' replies: Woof, woof....'])
 }

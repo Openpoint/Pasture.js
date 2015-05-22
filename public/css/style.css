@@ -40,12 +40,30 @@ padding:0 1.5em;
 font-size:1em;
 line-height:1.5em;
 }
-.console{
+#console{
 margin-top:20px;
 padding:20px;
 height:300px;
 width:100%;
 background:Gainsboro;
 text-align:left;
-color:white;
+color:teal;
+overflow-y:scroll;
+}
+.connected span{
+font-weight:bold;
+}
+.connected{
+margin:1em 0;
+}
+.connected.many{
+	display:none;
+}
+button{
+border-radius:none;
+border:2px solid black;
+background:none;
+cursor:pointer;
+display:inline-block;
+margin:10px;
 }

@@ -91,7 +91,7 @@ sheepdog.d.boot2=function(){
 			//create a test call response
 			self[mod].a.test=function(x){
 				console.log('sheepdog.'+mod+' returns : '+x)
-				talk.back('shepherd.prime','do','test',['back']);
+				talk().back('shepherd.prime','do','test',['back']);
 			}
 
 			//create an instance of all available sheep
@@ -142,7 +142,9 @@ sheepdog.d.boot3=function(){
 		}else{
 			delete sheepdog.d;
 			socket = io.connect(socket);
-			talk=exports.talk(io);
+			talk=function(){
+				return exports.talk(io);
+			}
 			sheepdog.run();
 		}
 	}
@@ -194,9 +196,9 @@ sheepdog.action=function(data){
 	}else if(arr[0]==='sheepdog' && modules.indexOf(arr[1])>-1){
 		exports.translate(instr,dat,self[arr[1]],key);
 	}else if(arr[0]==='sheep'){
-		talk.sheep(data);				
+		talk().sheep(data);				
 	}else if(key==='shepherd'||(arr[0]==='shepherd' && modules.indexOf(arr[1])>-1)){
-		talk.shepherd(data);	
+		talk().shepherd(data);	
 	}else{
 		console.warn("'"+key+"' is not a variable or a command")
 	}		
@@ -213,7 +215,7 @@ sheepdog.listen_sheep=function(data) {
 /*-------------------------------------------Built in methods-----------------------------------*/
 sheepdog.ping=function(mess,time){
 	console.log('ping : '+mess);
-	talk.back('shepherd','do','pingback',['pingback from : '+socket.id,time]);
+	talk().back('shepherd','do','pingback',['pingback from : '+socket.id,time]);
 }
 sheepdog.kill_sheep=function(shee){
 	var x=getworker(shee)
@@ -242,7 +244,7 @@ sheepdog.write=function(key,data){
 sheepdog.read=function(key,module){
 	var val=JSON.parse(localStorage.getItem(key));
 	//console.log('sheep.'+module,'set','promises.'+key,val);
-	talk.back('sheep.'+module,'set','promises.'+key,val);
+	talk().back('sheep.'+module,'set','promises.'+key,val);
 }
 //helpers for built in methods
 function getworker(name){

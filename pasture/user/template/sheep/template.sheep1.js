@@ -41,3 +41,7 @@ importScripts('/js/modules/system/sheep.js');
 
 /*-------------------------------------------Custom logic goes below here-----------------------------------*/
 
+sheep1.bleat=function(id){
+	console.log(id);
+	talk().back('shepherd.template','do','bleatbark',[id,'Sheep says: Meeeehhheeeeeee....'])
+}
