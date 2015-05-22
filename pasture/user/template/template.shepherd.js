@@ -112,10 +112,12 @@ global[module_name].onDisconnect=function(){
 /*-------------------------------------------Add custom logic below here-----------------------------------*/
 
 
-
+var count=0;
 function samplePinger(){
 	setTimeout(function(){
 		ping('Template says: Welcome to Shepherd!');
+		talk().emit('sheepdog.template','do','console',['The shepherd says '+count])
+		count++;
 		samplePinger();
 	},5000)
 }

@@ -1,1 +1,1 @@
-../../../../../../../../home/michaeladmin/html/pasture/settings.js
+../../../../settings.js

@@ -1,1 +1,1 @@
-../../../../../../../../home/michaeladmin/html/pasture/pasture/system/translate.js
+../../../../pasture/system/translate.js

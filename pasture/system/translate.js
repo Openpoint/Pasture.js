@@ -69,6 +69,7 @@ exports.translate=function(instr,data,ref,context){
 		if(typeof fn==='function'){
 			fn.apply(this,data[fname]);				
 		}else{
+			console.log(fname);
 			throw new Error(fname+'() is not a function');
 		}
 	}else if(instr==='set'){

@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/style.css" />		
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Fira+Mono:400,700|Poiret+One' rel='stylesheet' type='text/css'>	
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>	
 		<script type="text/javascript" src="js/sheepdog.js"></script>				
 	</head>
-	<body>
-		<h1>Hello</h1>
+	<body class='container'>
+		<div id='header'>
+			<div id='logo' class='floatleft'>
+				<img src='images/pasture_master.png' />
+			</div>
+			<div id='logotype' class='floatleft'>
+				<div id='title'>Pasture.js</div>
+				<div>Pasture is a framework for distributed, browser based computing systems.</div>
+			</div>
+			<div class='clearfix'></div>
+		</div>
+		<div class='content'>
+			<p>It is a modular JS framework built on top of Node.js and Socket.io. These establish web sockets between HTML5 browser clients and your node server. Pasture provides a common language to pass instructions bi-directionally between your server, the browser JS Window and browser Web Workers.</p>
+			<pre class=console>
+Hello there
+			</pre>		
+		</div>
+
 	</body>
 
 </html>

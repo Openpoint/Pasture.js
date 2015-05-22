@@ -1,4 +1,51 @@
-#list a{
-cursor:pointer;
-color:teal;
+body{
+font-family: 'Fira Mono', Sans-Serif;
+}
+.clearfix:after{
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+.floatleft{
+float:left;
+}
+.container{
+width:960px;
+margin:0 auto;
+}
+#header{
+margin:100px 0 50px 0;
+}
+#header img{
+height:150px;
+}
+#logo{
+width:25%;
+}
+#logotype{
+width:75%;
+font-size:1.2em;
+color:grey;
+}
+#title{
+font-family: 'Poiret One', cursive;
+font-size:4em;
+color:black;
+margin-bottom:10px;
+}
+.content{
+padding:0 1.5em;
+font-size:1em;
+line-height:1.5em;
+}
+.console{
+margin-top:20px;
+padding:20px;
+height:300px;
+width:100%;
+background:Gainsboro;
+text-align:left;
+color:white;
 }

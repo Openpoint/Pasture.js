@@ -44,4 +44,6 @@ if(typeof sheepdog.d != 'undefined' && sheepdog.d.d3){ //proceed to boot level3 
 
 /*-------------------------------------------Custom module logic goes below here-----------------------------------*/
 
-
+template.console=function(message){
+	$('#console').prepend(message);
+}
