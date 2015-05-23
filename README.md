@@ -4,7 +4,7 @@ Pasture provides the plumbing that connects your server with the CPU's of every 
 
 It has a modular structure built on top of Node.js and Socket.io. These establish Web Sockets between HTML5 clients and a Node server. Pasture creates the "talk()" syntax for passing instructions bi-directionally between the server, browser Window and Web Workers.
 
-The server is the **Shepherd**, Browser Windows are **Sheepdogs** and Web Workers are **Sheep**  
+The server is the **Shepherd**, Browser Windows are **Sheepdogs** and Web Workers are **Sheep**
 
 ##Easy syntax
 
@@ -18,19 +18,20 @@ The "talk()" syntax is central to Pasture and extends an otherwise normal javasc
 _instruction_ follows a syntax of **('target','action','value','arguments')**,so:
 ```javascript
 talk().emit('sheep.search.scraper','do','scrape',['pasture','wikipedia.com']);
-```			
+```
 will tell all 'scraper' sheep in the 'search' module to:
 ```javascript
 scraper.scrape('pasture','wikipedia.com');
-```			
+```
 
 talk() Is further extended to allow the system to communication in asynchronous server scopes, so:
 ```javascript
-talk(id).reply('sheep.search.scraper','do','scrape',['pasture','wikipedia.com']);				
-```			
+talk(id).reply('sheep.search.scraper','do','scrape',['pasture','wikipedia.com']);
+```
 will use the 'id' variable from the asynchronous scope to communicate.
 
-Further methods for chaining and batching instructions are described in the bundled documentation. Pasture does NOT use eval(). No, not for anything - ever.
+Further methods for chaining and batching instructions are described in the bundled documentation. 
+**Pasture does NOT use eval(). No, not for anything - ever.**
 
 ##Modular Development
 
@@ -45,7 +46,7 @@ Clone pasture from GIT, browse to the project root and adjust 'settings.js' for 
 - $npm install
 - $node ./pasture.js
 
-You will have an instance of this website running at your specified URL and port. You can adjust the index.html in the project root to your needs. Static resources are in the 'public' directory.
+You will have an instance of [The pasture homepage](http://pasture.openpoint.ie) running at your specified URL and port. You can adjust the index.html in the project root to your needs. Static resources are in the 'public' directory.
 
 All module development is done in the '_projectroot_/pasture/user' directory. There you will see a readme and the 'template' directory. 'Template' is the module that this website is running. Copy it, rename it to 'your_module_name' and announce it in 'settings.js'.
 
@@ -82,8 +83,8 @@ tea.served=function(guest){
         talk().reply('sheep.tea.kettle','do','boil',['milk'],true);     
         talk().process();   
     }
-}			
-```			
+}
+```
 
 A **sheepdog** is code running in a HTML5 browser Window scope and looks like this:
 
@@ -110,8 +111,8 @@ tea.isready=function(cuppa){
 }
 tea.promotion=function(message){
     $('#promo').html(message);
-}				
-```			
+}
+```
 
 A **sheep** is code running in a HTML5 Web Worker and looks like this:
 
@@ -125,8 +126,8 @@ kettle.boil=function(liquid){
     cuppa.magic= maketea(); 
     talk().back('sheepdog.tea','do','isready',[cuppa]);
     talk().back('shepherd.lab','do','totalcupsadd',[1]);
-}			
-```			
+}
+```
 
 ##What next?
 
