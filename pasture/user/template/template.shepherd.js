@@ -19,7 +19,7 @@
  * michael@openpoint.ie
  * 
  * 
- * This file is part of <your module name>
+ * This file is part of the Pasture module <your module name>
  * 
  * <Your module name> Copyright (C) <year> <your name>
  * <Your module name> inherits all licensing and terms from Pasture
@@ -133,12 +133,12 @@ var abitoffun=[
 	'You need a smartcoat',
 	'You need a smartcollar',
 	'You need smartblinkers',
-	'Beware the wolves',
+	'Beware of the wolves',
 	'Socialise with the other sheep',
 	'Democratise the farmyard',
 	'Consume less meat',
 	'Mutton is not lamb',
-	'Judge not',
+	'Don\'t judge',
 	'Follow me'
 ];
 var count=0;

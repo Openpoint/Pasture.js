@@ -19,7 +19,7 @@
  * michael@openpoint.ie
  * 
  * 
- * This file is part of <your module name>
+ * This file is part of the Pasture module <your module name>
  * 
  * <Your module name> Copyright (C) <year> <your name>
  * <Your module name> inherits all licensing and terms from Pasture

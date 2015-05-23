@@ -8,7 +8,9 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link href='http://fonts.googleapis.com/css?family=Fira+Mono:400,700|Poiret+One' rel='stylesheet' type='text/css'>	
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>	
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+		<script type="text/javascript" src="js/fancystuff.js"></script>	
 		<script type="text/javascript" src="js/sheepdog.js"></script>
 		
 						
@@ -28,6 +30,11 @@
 			<p>Pasture provides the plumbing that connects your server with the CPU's of every visitor to your website. This enables you to stay focused on the business logic of your distributed computing project.</p> 
 			
 			<p>It has a modular structure built on top of Node.js and Socket.io. These establish Web Sockets between HTML5 clients and a Node server. Pasture creates the "talk()" syntax for passing instructions bi-directionally between the server, browser Window and Web Workers.</p>
+			<p>
+				The server is the <span class='logo' onclick='logo(fs.shepherd)'>Shepherd</span>,
+				Browser Windows are <span class='logo' onclick='logo(fs.sheepdog)'>Sheepdogs</span> and
+				Web Workers are <span class='logo' onclick='logo(fs.sheep)'>Sheep</span>
+			</p>
 			<div class='centered'>
 				<div class='connected many'>There are <span></span> sheepdogs connected in this pasture. <a class='new' onclick='newwindow()'>Add</a> more.</div>
 				<div class='connected single'>You are the only sheepdog in the pasture. <a class='new' onclick='newwindow()'>Open</a> another browser tab.</div>
@@ -37,6 +44,61 @@
 			<pre id='console'>
 Welcome to Pasture.
 			</pre>
+			<strong>Easy syntax</strong>
+			<p>The "talk()" syntax is central to Pasture and extends an otherwise normal javascript workflow.</p>
+			<ul class='syntax'>
+				<li>talk().emit(_instruction_) signals all connected sheepdogs</li>
+				<li>talk().reply(_instruction_) replies to one specific sheepdog</li>
+				<li>talk().broadcast(_instruction_) replies to all except specific sheepdog</li>
+				<li>talk().back(_instruction_) bridges between sheep, sheepdogs and the shepherd from the remote side</li>			
+			</ul>
+			</p>
+			<p>_instruction_ follows a syntax of ('target','action','value','arguments'),so:
+			<pre class='prettyprint syntax'>
+talk().emit('sheep.search.scraper','do','scrape',['pasture','wikipedia.com']);
+			</pre>
+			will tell all 'scraper' sheep in the 'search' module to: 
+			<pre class='prettyprint syntax'>
+scraper.scrape('pasture','wikipedia.com');
+			</pre>
+			</p>
+			<p>
+			talk() Is further extended to allow system communication in asynchronous server scopes, so:
+			<pre class='prettyprint syntax'>
+talk(id).reply('sheep.search.scraper','do','scrape',['pasture','wikipedia.com']);				
+			</pre>
+			will use the 'id' variable from the asynchronous scope to communicate.
+			</p>
+			<p>Further methods for chaining and batching instructions are described in the <a href='https://github.com/Openpoint/Pasture.js/tree/master/pasture/user' target='_blank'>bundled documentation</a>. Pasture does NOT use eval(). No, not for anything - ever.</p>
+			<div class='section'></div>						
+			<strong>Modular Development</strong>
+			<p>
+			Pasture works out of the box on Unix type servers. Install:
+			<ul>
+				<li>Node.js</li>
+				<li>NPM</li>
+				<li>and optionally MongoDB</li>			 
+			</ul>
+			Clone pasture from GIT, browse to the project root and adjust 'settings.js' for your environment. Then do:
+			<ul>
+				<li>$npm install</li>
+				<li>$node ./pasture.js</li>
+			</ul>
+			 You will have an instance of this website running at your specified URL and port. You can adjust the index.html in the project root to your needs. Static resources are in the 'public' directory.
+			</p>
+			<p>
+			All module development is done in the '_projectroot_/pasture/user' directory. There you will see a readme and the 'template' directory. 'Template' is the module that this website is running. Copy it, rename it to 'your_module_name' and announce it in 'settings.js'.
+			</p>
+			<p>
+			A module has at minimum 3 files:
+			<ul>
+				<li>your_module_name.shepherd.js</li>
+				<li>your_module_name.sheepdog.js</li>
+				<li>sheep/your_module_name.your_sheep_name.js</li>
+			</ul>
+			</p>
+			<div class='section'></div>						
+			<strong>Module example</strong>
 			<p>Below is a fictional, simplified module example. It illustrates a Pasture module's code structure, syntax and logic by representing a tea room serving customers while gauging customer satisfaction. It has hooks for promotions, product quality analysis and HR modules.</p>
 			<p class='codehead'>The <strong>shepherd</strong> is code running in your node.js server and looks like this:</p>
 			<pre class='prettyprint'>
@@ -101,11 +163,19 @@ kettle.boil=function(liquid){
     talk().back('shepherd.lab','do','totalcupsadd',[1]);
 }			
 			</pre>
+			<div class='section'></div>						
+			<strong>What next?</strong>
+			<p>
+				<ul>
+					<li>Integrate socket.io's 'rooms' concept to create 'talk(group).emit(_instruction_)'</li>
+					<li>Explore WEBRTC and projects like <a href='http://www.peer-server.com/' target='_blank'>+Peerserver</a> further.</li>
+					<li>Explore the feasibility of a 'talk(subject).sideways(_instruction_)'.</li>
+				</ul>
+			</p>
 			<div id=footer>
 				<p class='codehead'>
 				Find out more or get Pasture on <a href='https://github.com/Openpoint/Pasture.js' target='_blank'>Github</a>.<br>
-				Pasture does NOT use eval(). No, not for anything.<br>
-				Pasture is an <a href='http://openpoint.ie'>Openpoint</a> project.<br>
+				Pasture is an <a href='http://openpoint.ie' target='_blank'>Openpoint</a> project.<br>
 				Enjoy Pasture responsibly.
 				</p>
 			</div>	

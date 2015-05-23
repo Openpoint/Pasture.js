@@ -24,13 +24,14 @@ will tell all 'scraper' sheep in the 'search' module to:
 scraper.scrape('pasture','wikipedia.com');
 ```
 
-talk() Is further extended to allow the system to communication in asynchronous server scopes, so:
+talk() Is further extended to allow system communication in asynchronous server scopes, so:
 ```javascript
 talk(id).reply('sheep.search.scraper','do','scrape',['pasture','wikipedia.com']);
 ```
 will use the 'id' variable from the asynchronous scope to communicate.
 
-Further methods for chaining and batching instructions are described in the bundled documentation. 
+Further methods for chaining and batching instructions are described in the [bundled documentation](https://github.com/Openpoint/Pasture.js/tree/master/pasture/user).
+ 
 **Pasture does NOT use eval(). No, not for anything - ever.**
 
 ##Modular Development

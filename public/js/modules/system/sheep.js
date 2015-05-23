@@ -37,10 +37,12 @@ self[sheep_name]={};
 self[sheep_name].promises={};
 self[sheep_name].test=function(x){
 	console.log('sheep.'+sheep_name+' returns : '+x);
-	talk.back('shepherd','do','test',['ping back from sheep.'+sheep_name]);
+	talk().back('shepherd','do','test',['ping back from sheep.'+sheep_name]);
 }
 var translate=exports.translate;
-var talk=exports.talk;
+var talk=function(){
+	return exports.talk();
+}
 /*-------------------------------------------listener for messages from sheepdog-----------------------------------*/
 
 self.addEventListener('message', function(e) {
