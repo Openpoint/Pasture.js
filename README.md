@@ -1,6 +1,5 @@
-<div style='width:20%;float:left'><img src='https://cloud.githubusercontent.com/assets/998947/7757711/528b78c6-fffc-11e4-868a-4bab7857b964.png' /></div>
-<div style='width:80%;padding-top:20px;'>
-<h1>Pasture.js</h1>
+<div><img src='https://cloud.githubusercontent.com/assets/998947/7757711/528b78c6-fffc-11e4-868a-4bab7857b964.png' />
+<span>Pasture.js</span>
 <h4 style='color:grey'>A framework for web browser based distributed computing systems.</h4>
 </div>
 <div style='width:100%;height:10px;clear:both;'></div>
