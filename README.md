@@ -46,9 +46,9 @@ Clone pasture from GIT, browse to the project root and adjust 'settings.js' for 
 - $npm install
 - $node ./pasture.js
 
-You will have an instance of [The pasture homepage](http://pasture.openpoint.ie) running at your specified URL and port. You can adjust the index.html in the project root to your needs. Static resources are in the 'public' directory.
+You will have an instance of [the pasture homepage](http://pasture.openpoint.ie) running at your specified URL and port. You can adjust the index.html in the project root to your needs. Static resources are in the 'public' directory.
 
-All module development is done in the '_projectroot_/pasture/user' directory. There you will see a readme and the 'template' directory. 'Template' is the module that this website is running. Copy it, rename it to 'your_module_name' and announce it in 'settings.js'.
+All module development is done in the '_projectroot_/pasture/user' directory. There you will see a readme and the 'template' directory. 'Template' is the module that [the pasture homepage](http://pasture.openpoint.ie) runs. Copy it, rename it to 'your_module_name' and announce it in 'settings.js'.
 
 A module has at minimum 3 files:
 
@@ -132,7 +132,7 @@ kettle.boil=function(liquid){
 ##What next?
 
 - Integrate socket.io's 'rooms' concept to create 'talk(group).emit(_instruction_)'
-- Explore WEBRTC and projects like +Peerserver further.
+- Explore WEBRTC and projects like [+Peerserver](http://www.peer-server.com/) further.
 - Explore the feasibility of a 'talk(subject).sideways(_instruction_)'.
 
 
