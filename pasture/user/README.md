@@ -70,7 +70,7 @@ The universals can call globals from their own context, but only universals can 
 - communicate with any shepherd, sheepdog or sheep  
 `talk().back(<instruction>);`
 - write to browser local storage (browser storage is normally limited to 5Mb)  
-`talk.write('key',value);`
+`talk().write('key',value);`
 - read from browser local storage asynchronously  
 `talk().read('key','module_name.sheep_name').then(function(data){});`
 - terminate, reset or spawn sheep respectively  
@@ -92,6 +92,8 @@ talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 `'sheepdog.module_name'`
 - communicate with specific sheep  
 `'sheep.module_name.sheep_name'`
+- communicate with a shepherd module
+`'shepherd.module_name'`
 
 **Actions:** `('destination','action','target',<parameters>,chain)`
 
