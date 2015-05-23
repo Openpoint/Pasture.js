@@ -92,7 +92,7 @@ talk().back('sheepdog','do','new_sheep',['module_name.sheep_name']);
 `'sheepdog.module_name'`
 - communicate with specific sheep  
 `'sheep.module_name.sheep_name'`
-- communicate with a shepherd module
+- communicate with a shepherd module  
 `'shepherd.module_name'`
 
 **Actions:** `('destination','action','target',<parameters>,chain)`
