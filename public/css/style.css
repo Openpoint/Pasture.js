@@ -1,6 +1,13 @@
 body{
 font-family: 'Fira Mono', Sans-Serif;
 }
+p{
+padding:.5em 0;
+}
+strong{
+font-weight:bold;
+text-transform:uppercase;
+}
 .clearfix:after{
 content: ".";
 display: block;
@@ -16,7 +23,7 @@ width:960px;
 margin:0 auto;
 }
 #header{
-margin:100px 0 50px 0;
+margin:100px 0 80px 0;
 }
 #header img{
 height:150px;
@@ -26,14 +33,19 @@ width:25%;
 }
 #logotype{
 width:75%;
-font-size:1.2em;
-color:grey;
+
 }
 #title{
 font-family: 'Poiret One', cursive;
-font-size:4em;
+font-size:5.5em;
 color:black;
 margin-bottom:10px;
+}
+#subhead{
+font-size:1.3em;
+line-height:1.2em;
+color:grey;
+width:80%;
 }
 .content{
 padding:0 1.5em;
@@ -41,7 +53,8 @@ font-size:1em;
 line-height:1.5em;
 }
 #console{
-margin-top:20px;
+margin-top:10px;
+margin-bottom:60px;
 padding:20px;
 height:300px;
 width:100%;
@@ -49,21 +62,39 @@ background:Gainsboro;
 text-align:left;
 color:teal;
 overflow-y:scroll;
+box-sizing:border-box;
+font-size:.85em;
 }
 .connected span{
 font-weight:bold;
 }
 .connected{
-margin:1em 0;
+margin:3em 0 1em 0;
 }
 .connected.many{
-	display:none;
+display:none;
 }
 button{
 border-radius:none;
 border:2px solid black;
 background:none;
 cursor:pointer;
-display:inline-block;
-margin:10px;
+padding:5px 10px!important;
+}
+pre.prettyprint{
+border:none!important;
+font-size:.85em!important
+}
+.new{
+text-decoration:underline;
+cursor:pointer;
+}
+.codehead{
+margin-top:20px;
+}
+#footer{
+margin-bottom:100px;
+}
+.centered{
+text-align:center;
 }

@@ -45,11 +45,25 @@ if(typeof sheepdog.d != 'undefined' && sheepdog.d.d3){ //proceed to boot level3 
 
 /*-------------------------------------------Custom module logic goes below here-----------------------------------*/
 
+if (!Date.now) {
+    Date.now = function() { return new Date().getTime(); }
+}
 
-template.console=function(message){
+var connected;
+function newwindow(){
+	window.open(window.location.href);
+}
+
+template.console=function(message,time){
+	
+	if(time){
+		time=Date.now()-time;
+		message=message+' in '+time+'ms'
+	}
 	$('#console').prepend(message+'<br>');
 }
 template.connected=function(count){
+	connected=count;
 	if(count > 1){
 		$('.connected.single').hide();
 		$('.connected.many').show();
@@ -60,11 +74,21 @@ template.connected=function(count){
 	}
 }
 template.bleat=function(){
-	talk().back('shepherd.template','do','bleat',[socket.id])
+	if(connected > 1){
+		$('#console').prepend('You bleat into the pasture and ^^^^^^^<br><br>');
+		talk().back('shepherd.template','do','bleat',[socket.id,Date.now()]);
+	}else{
+		$('#console').prepend('<br>You bleat into the empty pasture and silence yells back at you.<br>Please open another browser window to populate the pasture.<br><br>');
+	}
 }
 template.bark=function(){
-	talk().back('shepherd.template','do','bark',[socket.id])	
+	if(connected > 1){
+		$('#console').prepend('You bark into the pasture and ^^^^^^^<br><br>');
+		talk().back('shepherd.template','do','bark',[socket.id,Date.now()]);
+	}else{
+		$('#console').prepend('<br>You bark into the empty pasture and silence yells back at you.<br>Please open another browser window to populate the pasture.<br><br>');
+	}	
 }
-template.barkback=function(id){
-	talk().back('shepherd.template','do','bleatbark',[id,socket.id+' replies: Woof, woof....'])
+template.barkback=function(id,time){
+	talk().back('shepherd.template','do','bleatbark',[id,socket.id+' replies: Woof, woof....',time])
 }

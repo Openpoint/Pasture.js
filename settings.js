@@ -3,8 +3,8 @@ exports.Settings={
 		'template'
 	],
 
-	nodeurl:'http://94.23.205.140',
-	nodeport:8080,
+	nodeurl:'http://pasture.openpoint.ie',
+	nodeport:8081,
 
 	usemongoose:false,
 	mongoose:{

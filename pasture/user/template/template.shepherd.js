@@ -119,24 +119,49 @@ global[module_name].onDisconnect=function(){
 }
 
 /*-------------------------------------------Add custom logic below here-----------------------------------*/
-
+var abitoffun=[
+	'Buy more wool',
+	'Obey the dogs',
+	'They know who you are',
+	'Vote for bigger pastures',
+	'Herd growth is essential',
+	'You are an unique little lamb',
+	'Eat better grass',
+	'Exercise',
+	'Get out of the woods',
+	'Graze more',
+	'You need a smartcoat',
+	'You need a smartcollar',
+	'You need smartblinkers',
+	'Beware the wolves',
+	'Socialise with the other sheep',
+	'Democratise the farmyard',
+	'Consume less meat',
+	'Mutton is not lamb',
+	'Judge not',
+	'Follow me'
+];
 var count=0;
 function samplePinger(){
 	setTimeout(function(){
-		ping('Template pings: '+count);
-		talk().emit('sheepdog.template','do','console',['The shepherd pings '+count])
-		count++;
+		ping('Template pings: '+abitoffun[count]);
+		talk().emit('sheepdog.template','do','console',['The shepherd says: '+abitoffun[count]])
+		if(count < abitoffun.length-1){
+			count++;
+		}else{
+			count=0;
+		}
 		samplePinger();
-	},15000)
+	},10000)
 }
 samplePinger();
 
-template.bleat=function(id){
-	talk().broadcast('sheep.template.sheep1','do','bleat',[id]);
+template.bleat=function(id,time){
+	talk().broadcast('sheep.template.sheep1','do','bleat',[id,time]);
 }
-template.bark=function(id){
-	talk().broadcast('sheepdog.template','do','barkback',[id]);
+template.bark=function(id,time){
+	talk().broadcast('sheepdog.template','do','barkback',[id,time]);
 }
-template.bleatbark=function(id,mess){
-	talk(id).reply('sheepdog.template','do','console',[mess])
+template.bleatbark=function(id,mess,time){
+	talk(id).reply('sheepdog.template','do','console',[mess,time])
 }
