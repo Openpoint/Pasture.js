@@ -48,14 +48,24 @@ if(typeof sheepdog.d != 'undefined' && sheepdog.d.d3){ //proceed to boot level3 
 if (!Date.now) {
     Date.now = function() { return new Date().getTime(); }
 }
-
+var input=document.getElementById('sayin');
+input.focus();
 var connected;
 function newwindow(){
 	window.open(window.location.href);
 }
 
-template.console=function(message,time){
+function valForm(){
 	
+	var val=input.value;
+	val=val.replace(/"/g,'`');
+	val=val.replace(/'/g,'`');
+	template.console('<br>You say: <span style="color:red">'+val+'</span><br>');
+	template.bark(val);
+	input.value='';
+	input.focus();
+}
+template.console=function(message,time){	
 	if(time){
 		time=Date.now()-time;
 		message=message+' in '+time+'ms'
@@ -75,20 +85,22 @@ template.connected=function(count){
 }
 template.bleat=function(){
 	if(connected > 1){
-		$('#console').prepend('You bleat into the pasture and ^^^^^^^<br><br>');
+		$('#console').prepend('<span style="color:red">You bleat into the pasture and ^^^^^^^</span><br>');
 		talk().back('shepherd.template','do','bleat',[socket.id,Date.now()]);
 	}else{
 		$('#console').prepend('<br>You bleat into the empty pasture and silence yells back at you.<br>Please open another browser window to populate the pasture.<br><br>');
 	}
 }
-template.bark=function(){
-	if(connected > 1){
-		$('#console').prepend('You bark into the pasture and ^^^^^^^<br><br>');
+template.bark=function(mess){
+	if(connected > 1 && !mess){
+		$('#console').prepend('<span style="color:red">You bark into the pasture and ^^^^^^^</span><br>');
 		talk().back('shepherd.template','do','bark',[socket.id,Date.now()]);
-	}else{
+	}else if(!mess){
 		$('#console').prepend('<br>You bark into the empty pasture and silence yells back at you.<br>Please open another browser window to populate the pasture.<br><br>');
+	}else{
+		talk().back('shepherd.template','do','bark',[socket.id,false,mess]);
 	}	
 }
 template.barkback=function(id,time){
-	talk().back('shepherd.template','do','bleatbark',[id,socket.id+' replies: Woof, woof....',time])
+	talk().back('shepherd.template','do','bleatbark',[id,socket.id+' replies: <span style="color:blue">Woof, woof....</span>',time])
 }

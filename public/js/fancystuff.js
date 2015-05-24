@@ -8,6 +8,9 @@ fs.sheepdog.src="../images/sheepdog.png";
 fs.sheep=new Image();
 fs.sheep.src="../images/sheep.png"   
 
+
+
+
 function logo(x){
 	window.scrollTo(0,0);
 	$('#logo').html(x);

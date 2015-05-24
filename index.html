@@ -29,7 +29,7 @@
 		<div class='content'>
 			<p>Pasture provides the plumbing that connects your server with the CPU's of every visitor to your website. This enables you to stay focused on the business logic of your distributed computing project.</p> 
 			
-			<p>It has a modular structure built on top of Node.js and Socket.io. These establish Web Sockets between HTML5 clients and a Node server. Pasture creates the "talk()" syntax for passing instructions bi-directionally between the server, browser Window and Web Workers.</p>
+			<p>It has a modular structure built on top of Node.js and Socket.io. These establish <a href='https://en.wikipedia.org/wiki/WebSocket' target='_blank'>Web Sockets</a> between HTML5 clients and a Node server. Pasture creates the "talk()" syntax for passing instructions bi-directionally between the server, browser Window and Web Workers.</p>
 			<p>
 				The server is the <span class='logo' onclick='logo(fs.shepherd)'>Shepherd</span>,
 				Browser Windows are <span class='logo' onclick='logo(fs.sheepdog)'>Sheepdogs</span> and
@@ -44,6 +44,11 @@
 			<pre id='console'>
 Welcome to Pasture.
 			</pre>
+			<form id="say" action="" onsubmit="valForm();return false;">
+				<input type='submit' value='say' id='saybutt'>
+				<input type='text' name='say' id='sayin'>
+				<div class='clearfix'></div>
+			</form>
 			<strong>Easy syntax</strong>
 			<p>The "talk()" syntax is central to Pasture and extends an otherwise normal javascript workflow.</p>
 			<ul class='syntax'>
@@ -73,13 +78,13 @@ talk(id).reply('sheep.search.scraper','do','scrape',['pasture','wikipedia.com'])
 			<div class='section'></div>						
 			<strong>Modular Development</strong>
 			<p>
-			Pasture works out of the box on Unix type servers. Install:
+			Pasture works out of the box on *nix type servers. Install:
 			<ul>
 				<li>Node.js</li>
 				<li>NPM</li>
 				<li>and optionally MongoDB</li>			 
 			</ul>
-			Clone pasture from GIT, browse to the project root and adjust 'settings.js' for your environment. Then do:
+			Clone or download pasture from <a href='https://github.com/Openpoint/Pasture.js' target='_blank'>GIT</a>, browse to the project root and adjust 'settings.js' for your environment. Then do:
 			<ul>
 				<li>$npm install</li>
 				<li>$node ./pasture.js</li>
@@ -100,7 +105,7 @@ talk(id).reply('sheep.search.scraper','do','scrape',['pasture','wikipedia.com'])
 			<div class='section'></div>						
 			<strong>Module example</strong>
 			<p>Below is a fictional, simplified module example. It illustrates a Pasture module's code structure, syntax and logic by representing a tea room serving customers while gauging customer satisfaction. It has hooks for promotions, product quality analysis and HR modules.</p>
-			<p class='codehead'>The <strong>shepherd</strong> is code running in your node.js server and looks like this:</p>
+			<p class='codehead'>The <strong><a href='https://github.com/Openpoint/Pasture.js/blob/master/pasture/user/template/template.shepherd.js' target='_blank'>shepherd</a></strong> is code running in your node.js server and looks like this:</p>
 			<pre class='prettyprint'>
 var module_name='tea';
 var ontheside=['milk','cookies','sugar'];
@@ -124,7 +129,7 @@ tea.served=function(guest){
     }
 }			
 			</pre>
-			<p class='codehead'>A <strong>sheepdog</strong> is code running in a HTML5 browser Window scope and looks like this:</p>
+			<p class='codehead'>A <strong><a href='https://github.com/Openpoint/Pasture.js/blob/master/pasture/user/template/template.sheepdog.js' target='_blank'>sheepdog</a></strong> is code running in a HTML5 browser Window scope and looks like this:</p>
 			<pre class='prettyprint'>
 var module_name='tea';
 var guest={satisfied:false,name:socket.id};
@@ -150,7 +155,7 @@ tea.promotion=function(message){
     $('#promo').html(message);
 }				
 			</pre>
-			<p class='codehead'>A <strong>sheep</strong> is code running in a HTML5 Web Worker and looks like this:</p>
+			<p class='codehead'>A <strong><a href='https://github.com/Openpoint/Pasture.js/blob/master/pasture/user/template/sheep/template.sheep1.js' target='_blank'>sheep</a></strong> is code running in a HTML5 Web Worker and looks like this:</p>
 			<pre class='prettyprint'>
 var sheep_name='kettle';
 function  maketea(){

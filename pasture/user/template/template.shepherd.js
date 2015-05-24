@@ -152,15 +152,20 @@ function samplePinger(){
 			count=0;
 		}
 		samplePinger();
-	},10000)
+	},30000)
 }
 samplePinger();
 
 template.bleat=function(id,time){
 	talk().broadcast('sheep.template.sheep1','do','bleat',[id,time]);
 }
-template.bark=function(id,time){
-	talk().broadcast('sheepdog.template','do','barkback',[id,time]);
+template.bark=function(id,time,mess){
+	console.log(mess);
+	if(time){
+		talk().broadcast('sheepdog.template','do','barkback',[id,time]);
+	}else{
+		talk().broadcast('sheepdog.template','do','console',[id+' says: <span style="color:blue">'+mess+'</span>']);
+	}
 }
 template.bleatbark=function(id,mess,time){
 	talk(id).reply('sheepdog.template','do','console',[mess,time])
