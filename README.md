@@ -34,7 +34,7 @@ Further methods for chaining and batching instructions are described in the [bun
  
 **Pasture does NOT use eval(). No, not for anything - ever.**
 
-##Modular Development
+##Get started fast
 
 Pasture works out of the box on Unix type servers. Install:
 
