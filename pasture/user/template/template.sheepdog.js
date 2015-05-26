@@ -103,4 +103,5 @@ template.bark=function(mess){
 }
 template.barkback=function(id,time){
 	talk().back('shepherd.template','do','bleatbark',[id,socket.id+' replies: <span style="color:blue">Woof, woof....</span>',time])
+	$('#console').prepend('You hear a distant bark and you respond: <span style="color:red">Woof, woof....</span><br>');
 }

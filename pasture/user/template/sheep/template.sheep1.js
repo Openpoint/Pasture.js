@@ -43,4 +43,5 @@ importScripts('/js/modules/system/sheep.js');
 
 sheep1.bleat=function(id,time){
 	talk().back('shepherd.template','do','bleatbark',[id,'A sheep replies: <span style="color:blue">Meeeehhheeeeeee....</span>',time]);
+	talk().back('sheepdog.template','do','console',['You hear a distant bleating and your sheep respond : <span style="color:red">Meeeehhheeeeeee....</span>']);
 }
