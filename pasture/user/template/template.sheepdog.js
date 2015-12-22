@@ -49,7 +49,6 @@ if (!Date.now) {
     Date.now = function() { return new Date().getTime(); }
 }
 var input=document.getElementById('sayin');
-input.focus();
 var connected;
 function newwindow(){
 	window.open(window.location.href);

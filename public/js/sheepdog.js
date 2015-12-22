@@ -59,7 +59,10 @@ sheepdog.d.boot1=function(){
 			sheepdog.d.d2++
 		}		
 		sheepdog.d.head.appendChild(script);
+
+		
 	}
+
 	//proceed to boot level2 after depencency injection
 	function proceed(){
 		setTimeout(function(){
