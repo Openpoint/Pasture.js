@@ -3,7 +3,7 @@ exports.Settings={
 		'template'
 	],
 
-	nodeurl:'http://pasture.openpoint.ie',
+	nodeurl:'http://localhost',
 	nodeport:8081,
 
 	usemongoose:false,

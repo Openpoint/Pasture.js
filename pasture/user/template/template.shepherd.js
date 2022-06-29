@@ -100,11 +100,11 @@ exports[module_name] = function(pat,f,tal,i,mongoose,errhand){
 
 /*-------------------------------------------Add custom logic to connect / disconnect events-----------------------------------*/
 global[module_name].onConnect=function(){
-
+	console.log(io.engine.clientsCount)
 	//add desired logic to run on new sheepdog connection initialisation here
 	
 	talk().broadcast('sheepdog.template','do','console',[socket+' has connected'],true)
-	talk().emit('sheepdog.template','do','connected',[io.sockets.sockets.length],true)
+	talk().emit('sheepdog.template','do','connected',[io.engine.clientsCount],true)
 	talk().process();
 
 		
@@ -114,7 +114,7 @@ global[module_name].onDisconnect=function(){
 	//add desired logic to run on a sheepdog disconnection here
 	
 	talk().broadcast('sheepdog.template','do','console',[socket+' has disconnected'],true)
-	talk().emit('sheepdog.template','do','connected',[io.sockets.sockets.length],true)
+	talk().emit('sheepdog.template','do','connected',[io.engine.clientsCount],true)
 	talk().process();
 }
 

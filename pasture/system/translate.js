@@ -89,18 +89,18 @@ exports.talk=function(io){
 
 	function dotalk(data,q){
 		var context=Object.keys(data)[0];
-		if(!q){		
+		if(!q){
 			if(context==='reply'){
-				if(io.sockets.connected[talk.socket]){
-					io.sockets.connected[talk.socket].emit('sheepdog',data.reply);
+				if(io.sockets.sockets[talk.socket]){
+					io.sockets.sockets[talk.socket].emit('sheepdog',data.reply);
 				}else{
 					console.warn('socket was lost');
 				}
 			}else if(context==='emit'){
 				io.emit('sheepdog',data.emit);
 			}else if(context==='broadcast'){
-				if(io.sockets.connected[talk.socket]){
-					io.sockets.connected[talk.socket].broadcast.emit('sheepdog',data.broadcast);
+				if(io.sockets.sockets[talk.socket]){
+					io.sockets.sockets[talk.socket].broadcast.emit('sheepdog',data.broadcast);
 				}else{
 					io.emit('sheepdog',data.broadcast);
 				}
